@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrismType: Typography & Accessibility Sandbox</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="app-header">
+        <div class="brand">
+            <h1>PrismType</h1>
+            <span class="badge">WCAG 2.1 Live Workbench</span>
+        </div>
+        <div class="header-actions">
+            <button id="reset-btn" class="btn secondary">Reset Defaults</button>
+            <button id="export-btn" class="btn primary">Export CSS Variables</button>
+        </div>
+    </header>
+
+    <main class="app-container">
+        <!-- Control Sidebar -->
+        <aside class="control-panel" aria-label="Typography Controls">
+            <section class="control-group">
+                <h2>Typography Settings</h2>
+                
+                <div class="control-item">
+                    <label for="font-primary">Primary Font Family</label>
+                    <select id="font-primary">
+                        <option value="system-ui, -apple-system, sans-serif">System Sans-Serif</option>
+                        <option value="Georgia, serif">Georgia (Serif)</option>
+                        <option value="'Courier New', monospace">Courier New (Monospace)</option>
+                        <option value="'Comic Sans MS', cursive">Comic Sans (Casual)</option>
+                    </select>
+                </div>
+
+                <div class="control-item">
+                    <label for="base-size">Base Font Size: <span id="val-base-size">16</span>px</label>
+                    <input type="range" id="base-size" min="12" max="24" value="16">
+                </div>
+
+                <div class="control-item">
+                    <label for="line-height">Line Height: <span id="val-line-height">1.5</span></label>
+                    <input type="range" id="line-height" min="1.0" max="2.5" step="0.05" value="1.5">
+                </div>
+
+                <div class="control-item">
+                    <label for="letter-spacing">Letter Spacing: <span id="val-letter-spacing">0</span>px</label>
+                    <input type="range" id="letter-spacing" min="-1" max="5" step="0.5" value="0">
+                </div>
+            </section>
+
+            <section class="control-group">
+                <h2>Color Palette & Contrast</h2>
+                
+                <div class="color-pickers">
+                    <div class="control-item color-item">
+                        <label for="text-color">Text Color</label>
+                        <input type="color" id="text-color" value="#111827">
+                    </div>
+                    <div class="control-item color-item">
+                        <label for="bg-color">Background</label>
+                        <input type="color" id="bg-color" value="#f9fafb">
+                    </div>
+                    <div class="control-item color-item">
+                        <label for="accent-color">Accent Color</label>
+                        <input type="color" id="accent-color" value="#4f46e5">
+                    </div>
+                </div>
+
+                <div class="contrast-results">
+                    <div class="contrast-card">
+                        <span class="contrast-label">Contrast Ratio</span>
+                        <span id="contrast-ratio" class="contrast-value">--:1</span>
+                    </div>
+                    <div class="wcag-badges">
+                        <div id="wcag-aa" class="wcag-badge fail">WCAG AA: Fail</div>
+                        <div id="wcag-aaa" class="wcag-badge fail">WCAG AAA: Fail</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="control-group">
+                <h2>Vision Simulation</h2>
+                <div class="control-item">
+                    <label for="vision-filter">Simulate Vision Deficiency</label>
+                    <select id="vision-filter">
+                        <option value="none">Normal Vision</option>
+                        <option value="protanopia">Protanopia (Red-Blind)</option>
+                        <option value="deuteranopia">Deuteranopia (Green-Blind)</option>
+                        <option value="tritanopia">Tritanopia (Blue-Blind)</option>
+                        <option value="achromatopsia">Achromatopsia (Total Color Blindness)</option>
+                    </select>
+                </div>
+            </section>
+        </aside>
+
+        <!-- Live Preview Stage -->
+        <section class="preview-stage">
+            <div class="stage-toolbar">
+                <h3>Live UI Components Preview</h3>
+                <span id="live-status" class="status-indicator">All Systems Pass</span>
+            </div>
+
+            <div id="simulation-viewport" class="simulation-viewport">
+                <!-- Component 1: Article Card -->
+                <article class="ui-card">
+                    <header class="card-header">
+                        <span class="tag">Accessibility</span>
+                        <span class="meta">5 min read</span>
+                    </header>
+                    <h4>The Importance of Inclusive Design in Modern Web Development</h4>
+                    <p>
+                        Inclusive design is not just an afterthought; it is a foundational pillar of sustainable digital products. By prioritizing legible typography, sufficient color contrast, and clear visual hierarchy, we ensure equitable access for millions of users worldwide.
+                    </p>
+                    <div class="card-actions">
+                        <button class="ui-btn primary">Read Article</button>
+                        <button class="ui-btn outline">Bookmark</button>
+                    </div>
+                </article>
+
+                <!-- Component 2: Interactive Form -->
+                <div class="ui-card">
+                    <h4>Feedback Form Sample</h4>
+                    <form class="ui-form" onsubmit="event.preventDefault();">
+                        <div class="form-group">
+                            <label for="sample-input">Your Name</label>
+                            <input type="text" id="sample-input" placeholder="Jane Doe" class="ui-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="sample-select">Experience Level</label>
+                            <select id="sample-select" class="ui-input">
+                                <option>Beginner Developer</option>
+                                <option>Intermediate Engineer</option>
+                                <option>Accessibility Specialist</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="ui-btn primary">Submit Feedback</button>
+                    </form>
+                </div>
+
+                <!-- Component 3: Data Dashboard snippet -->
+                <div class="ui-card">
+                    <h4>Performance Metrics</h4>
+                    <p class="small-text">Real-time evaluation data collected across verified test nodes.</p>
+                    <div class="metrics-grid">
+                        <div class="metric-box">
+                            <span class="metric-title">Readability</span>
+                            <span class="metric-val">98.4%</span>
+                        </div>
+                        <div class="metric-box">
+                            <span class="metric-title">Compliance</span>
+                            <span class="metric-val" id="metric-compliance">Level AA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Export Modal -->
+    <div id="export-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal">
+            <h3 id="modal-title">Generated CSS Custom Properties</h3>
+            <p>Copy these variables directly into your stylesheet:</p>
+            <textarea id="export-code" readonly></textarea>
+            <div class="modal-actions">
+                <button id="copy-code-btn" class="btn primary">Copy to Clipboard</button>
+                <button id="close-modal-btn" class="btn secondary">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
